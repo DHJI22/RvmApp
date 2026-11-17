@@ -15,11 +15,11 @@ jobs:
 
       - name: Unpack RvmApp.zip
         run: |
-          unzip -q RvmApp.zip -d temp_extract
+          unzip -oq RvmApp.zip -d temp_extract
           if [ -d "temp_extract/RvmApp" ]; then
-            cp -rn temp_extract/RvmApp/* .
+            cp -r temp_extract/RvmApp/* .
           else
-            cp -rn temp_extract/* .
+            cp -r temp_extract/* .
           fi
           rm -rf temp_extract
 
@@ -33,9 +33,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
 
       - name: Build Debug APK
         run: |
